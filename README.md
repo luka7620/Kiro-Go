@@ -24,10 +24,10 @@ If this project helps you, a Star would mean a lot.
 ### Docker Compose (Recommended)
 
 ```bash
-git clone https://github.com/Quorinex/Kiro-Go.git
-cd Kiro-Go
-mkdir -p data
-docker-compose up -d
+mkdir -p kiro-go-deploy && cd kiro-go-deploy
+curl -sSL https://raw.githubusercontent.com/luka7620/Kiro-Go/main/deploy/docker-deploy.sh | bash
+docker compose up -d
+docker compose logs -f kiro-go
 ```
 
 ### Docker Run
@@ -39,7 +39,7 @@ docker run -d \
   -e ADMIN_PASSWORD=your_secure_password \
   -v /path/to/data:/app/data \
   --restart unless-stopped \
-  ghcr.io/quorinex/kiro-go:latest
+  luka762/kiro-go:latest
 ```
 
 ### Build from Source

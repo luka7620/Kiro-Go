@@ -1,0 +1,14 @@
+services:
+  kiro-go:
+    image: ${KIRO_GO_IMAGE:-luka762/kiro-go:latest}
+    container_name: ${KIRO_GO_CONTAINER_NAME:-kiro-go}
+    platform: ${KIRO_GO_PLATFORM:-linux/arm64}
+    ports:
+      - "${KIRO_GO_PORT:-8080}:8080"
+    volumes:
+      - ./data:/app/data
+    environment:
+      CONFIG_PATH: /app/data/config.json
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      TZ: ${TZ:-Asia/Shanghai}
+    restart: unless-stopped
